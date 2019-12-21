@@ -22,7 +22,7 @@
                 <br>
                 <input type="text" data-bind="value: inputValue">
                 <br>
-                <h1 data-bind="text: computed"></h1>
+                <h1 data-bind="text: computed()"></h1>
                 <br>
                 <ul data-bind="foreach: list">
                     <li data-bind="text:$data"></li>
@@ -42,10 +42,9 @@
             self.buttonAction = function () {
                 self.list.splice(0, 0, 100);
             };
-            self.computed = ko.pureComputed(function () {
-                this.inputValue = ko.observable("Xxxxxx")
+            self.computed = function () {
                 return self.labelText() + " " + self.inputValue();
-            })
+            }
 
         }
         vm = new ViewModel();
